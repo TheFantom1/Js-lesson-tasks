@@ -1,3 +1,6 @@
+//- Створити змінні. Присвоїти кожному з них значення: 'hello','owu','com', 'ua', 1, 10, -999, 123, 3.14, 2.7, 16, true, false.
+//Вивести кожну змінну за допомогою: console.log
+
 const zabor1 = 'hello'
 const zabor2 = 'owu'
 const zabor3 = 'com'
