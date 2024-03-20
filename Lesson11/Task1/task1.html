@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<!--
+- взяти https://dummyjson.com/docs/carts та вивести інформацію про всі корзини. Відобразити всі поля кожної корзини.
+-->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    fetch('https://dummyjson.com/carts')
+        .then(res => res.json())
+        .then(console.log);
+</script>
+
+</body>
+</html>

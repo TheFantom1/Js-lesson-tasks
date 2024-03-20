@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+</head>
+<body>
+<h1>User Details</h1>
+<div id="userDetails"></div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('id');
+
+    fetch(`http://jsonplaceholder.typicode.com/users/${userId}`)
+        .then(response => response.json())
+        .then(user => {
+            const userDetailsDiv = document.getElementById('userDetails');
+            const userDetailsList = document.createElement('ul');
+
+            for (const [key, value] of Object.entries(user)) {
+                if (typeof value === 'object') {
+                    const subList = document.createElement('ul');
+                    for (const [subKey, subValue] of Object.entries(value)) {
+                        const subListItem = document.createElement('li');
+                        subListItem.textContent = `${subKey}: ${subValue}`;
+                        subList.appendChild(subListItem);
+                    }
+                    const listItem = document.createElement('li');
+                    listItem.textContent = key;
+                    listItem.appendChild(subList);
+                    userDetailsList.appendChild(listItem);
+                } else {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${key}: ${value}`;
+                    userDetailsList.appendChild(listItem);
+                }
+            }
+
+            userDetailsDiv.appendChild(userDetailsList);
+        })
+        .catch(error => console.error('Помилка:', error));
+</script>
+</body>
+</html>
